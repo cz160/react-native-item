@@ -1,0 +1,41 @@
+{
+  "main":"./node_modules/react-native-scripts/build/bin/crna-entry.js",
+  "scripts": {
+    "start": "react-native-scripts start",
+    "eject": "react-native-scripts eject",
+    "android": "react-native-scripts android",
+    "ios": "react-native-scripts ios",
+    "test": "node node_modules/jest/bin/jest.js",
+    "lint": "tslint src/**/*.ts",
+    "tsc": "tsc",
+    "clean": "rimraf build",
+    "build": "yarn run clean && yarn run tsc --",
+    "watch": "yarn run build -- -w",
+    "watchAndRunAndroid": "concurrently \"yarn run watch\" \"yarn run android\"",
+    "buildRunAndroid": "yarn run build && yarn run watchAndRunAndroid",
+    "watchAndRunIOS": "concurrently \"yarn run watch\" \"yarn run ios\"",
+    "buildRunIos":"yarn run build && yarn run watchAndRunIos ",
+    "watchAndStart":"concurrently  \"yarn run watch\" \"yarn run start\"",
+    "buildAndStart":"yarn run build && yarn run watchAndStart"
+  },
+  "dependencies": {
+    "expo": "^31.0.2",
+    "react": "16.5.0",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.10",
+    "@types/react": "^16.7.10",
+    "@types/react-dom": "^16.0.11",
+    "@types/react-native": "^0.57.15",
+    "@types/react-test-renderer": "^16.0.3",
+    "babel-preset-expo": "^5.0.0",
+    "concurrently": "^4.1.0",
+    "react-native-scripts": "^2.0.1",
+    "rimraf": "^2.6.2",
+    "ts-jest": "^23.10.5",
+    "tslint": "^5.11.0",
+    "typescript": "^3.2.1"
+  },
+  "private": true
+}
