@@ -11,8 +11,8 @@
       "experimentalDecorators": true,
       "preserveConstEnums": true,
       "allowJs": true,
-      "noUnusedLocals": true,
-      "noUnusedParameters": true,
+      "noUnusedLocals": false,
+      "noUnusedParameters": false,
       "noImplicitReturns": true,
       "skipLibCheck": true,
       "moduleResolution":"Node"

@@ -1,5 +1,5 @@
 {
-  "main":"./node_modules/react-native-scripts/build/bin/crna-entry.js",
+  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
     "start": "react-native-scripts start",
     "eject": "react-native-scripts eject",
@@ -14,14 +14,20 @@
     "watchAndRunAndroid": "concurrently \"yarn run watch\" \"yarn run android\"",
     "buildRunAndroid": "yarn run build && yarn run watchAndRunAndroid",
     "watchAndRunIOS": "concurrently \"yarn run watch\" \"yarn run ios\"",
-    "buildRunIos":"yarn run build && yarn run watchAndRunIos ",
-    "watchAndStart":"concurrently  \"yarn run watch\" \"yarn run start\"",
-    "buildAndStart":"yarn run build && yarn run watchAndStart"
+    "buildRunIos": "yarn run build && yarn run watchAndRunIos ",
+    "watchAndStart": "concurrently  \"yarn run watch\" \"yarn run start\"",
+    "buildAndStart": "yarn run build && yarn run watchAndStart"
   },
   "dependencies": {
+    "@types/react-native-tab-navigator": "^0.3.2",
+    "@types/uuid": "^3.4.4",
     "expo": "^31.0.2",
+    "lodash": "^4.17.11",
     "react": "16.5.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz"
+    "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
+    "react-native-swiper": "^1.5.14",
+    "react-native-tab-navigator": "^0.3.4",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "@types/jest": "^23.3.10",
