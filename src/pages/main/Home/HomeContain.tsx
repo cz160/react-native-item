@@ -4,6 +4,8 @@ import {View,Text,StyleSheet,ScrollView} from 'react-native'
 import Swiper from './swiper/swiper'
 //热门分类
 import HotMute from './HotMune/HotMune'
+//精品好菜
+import BatterFood from './BatterFood/BatterFood'
 export default class HomeContain extends Component{
     render(){
         return (
@@ -11,9 +13,7 @@ export default class HomeContain extends Component{
                 <View style={styles.HomeContain}> 
                     <Swiper />
                     <HotMute />
-                    <HotMute />
-                    <HotMute />
-                    <HotMute />
+                    <BatterFood />
                 </View>
             </ScrollView>
             

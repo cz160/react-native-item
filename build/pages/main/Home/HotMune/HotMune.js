@@ -1,3 +1,9 @@
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -7,9 +13,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import { Fetch } from '../../../../util';
-export default class HotMute extends Component {
+import { inject, observer } from 'mobx-react';
+let HotMute = class HotMute extends Component {
     constructor(Props) {
         super(Props);
         this.state = {
@@ -29,7 +36,16 @@ export default class HotMute extends Component {
     rendItem() {
         let { items } = this.state;
         return items.map((item, i) => (React.createElement(View, { style: styles.hotItem, key: i },
-            React.createElement(Text, null, item))));
+            React.createElement(TouchableHighlight
+            //切换页面
+            , { 
+                //切换页面
+                onPress: () => {
+                    this.props.store.Navigation.navigation.navigate('List', {
+                        title: item
+                    });
+                } },
+                React.createElement(Text, null, item)))));
     }
     render() {
         return (React.createElement(View, { style: styles.hotContainer },
@@ -37,7 +53,12 @@ export default class HotMute extends Component {
                 React.createElement(Text, { style: styles.hotTitleText }, "\u70ED\u95E8\u5206\u7C7B")),
             React.createElement(View, { style: styles.hotContent }, this.rendItem())));
     }
-}
+};
+HotMute = __decorate([
+    inject('store'),
+    observer
+], HotMute);
+export default HotMute;
 const styles = StyleSheet.create({
     hotContainer: {
         backgroundColor: '#fff',

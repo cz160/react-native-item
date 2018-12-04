@@ -1,10 +1,15 @@
 import React,{Component} from 'react'
-import {View,Text,StyleSheet, Alert} from 'react-native'
+import {View,Text,StyleSheet, Alert,TouchableHighlight } from 'react-native'
 import {Fetch} from '../../../../util'
-interface Props{}
+import { inject, observer } from 'mobx-react'
+interface Props{
+    store?:any
+}
 interface State {
     items:Array<any>
 }
+@inject('store')
+@observer
 export default class HotMute extends Component <Props,State>{
     constructor(Props:any){
         super(Props)
@@ -25,7 +30,17 @@ export default class HotMute extends Component <Props,State>{
         let {items} = this.state
         return items.map((item,i)=>(
             <View style={styles.hotItem} key={i}>
-                <Text>{item}</Text>
+                <TouchableHighlight
+                    //切换页面
+                    onPress={()=>{
+                        this.props.store.Navigation.navigation.navigate('List',{
+                            title:item
+                        })
+                    }}
+                >
+                    <Text>{item}</Text>
+                </TouchableHighlight>
+                
             </View>
         ))
     }

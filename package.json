@@ -20,13 +20,18 @@
   },
   "dependencies": {
     "@types/react-native-tab-navigator": "^0.3.2",
+    "@types/react-navigation": "^2.13.7",
     "@types/uuid": "^3.4.4",
     "expo": "^31.0.2",
     "lodash": "^4.17.11",
+    "mobx": "^5.7.0",
+    "mobx-react": "^5.4.2",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
+    "react-native-camera": "^1.4.3",
     "react-native-swiper": "^1.5.14",
     "react-native-tab-navigator": "^0.3.4",
+    "react-navigation": "^2.2.1",
     "uuid": "^3.3.2"
   },
   "devDependencies": {

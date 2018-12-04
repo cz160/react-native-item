@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import { StyleSheet, Text, View,Image } from 'react-native';
+import { StyleSheet, Text, View,Image,StatusBar } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator'
 //引入图片资源
 const cookBook = require('../../../assets/images/cookbook.png')
@@ -12,25 +12,37 @@ const more = require('../../../assets/images/more.png')
 const moreActive = require('../../../assets/images/more-active.png')
 //引入每个页面的组件
 import HomeContain from './Home/HomeContain'
-
+import MuteContain from './Mute/MuteContainer'
+import MapContain from './Map/MapContainer'
+import {inject} from 'mobx-react'
 import uuid from 'uuid'
-interface Props {}
+interface Props {
+    navigation:any,
+    store?:any
+}
 interface State {
     selectedTab:string,
     navs:Array<any>
 }
+@inject('store')
 export default class MainContainer extends Component <Props,State> {
+    static navigationOptions = {
+        title:'菜谱大全'
+    }
     constructor(Props:any){
         super(Props)
         this.state = {
             selectedTab:'home',
             navs:[
                 {id:uuid(),name:'home','title':'菜谱大全',icon:cookBook,iconActive:cookBookActive,component:<HomeContain />},
-                {id:uuid(),name:'mune','title':'分类',icon:menu,iconActive:menuActive,component:<Text>分类</Text>},
-                {id:uuid(),name:'map','title':'地图',icon:location,iconActive:locationActive,component:<Text>地图</Text>},
+                {id:uuid(),name:'mune','title':'分类',icon:menu,iconActive:menuActive,component:<MuteContain />},
+                {id:uuid(),name:'map','title':'地图',icon:location,iconActive:locationActive,component:<MapContain />},
                 {id:uuid(),name:'more','title':'个人中心',icon:more,iconActive:moreActive,component:<Text>个人中心</Text>},
             ]
         }
+    }
+    componentWillMount () {
+        this.props.store.Navigation.setNavigation(this.props.navigation)
     }
     renderItem(){
         let {navs} = this.state;
@@ -50,6 +62,13 @@ export default class MainContainer extends Component <Props,State> {
     render() {
       return (
         <View style={styles.container}>
+            <StatusBar  
+                    animated={true} //指定状态栏的变化是否应以动画形式呈现。目前支持这几种样式：backgroundColor, barStyle和hidden  
+                    hidden={false}  //是否隐藏状态栏。  
+                    backgroundColor={'green'} //状态栏的背景色  
+                    translucent={false}//指定状态栏是否透明。设置为true时，应用会在状态栏之下绘制（即所谓“沉浸式”——被状态栏遮住一部分）。常和带有半透明背景色的状态栏搭配使用。  
+                    barStyle={'default'} // enum('default', 'light-content', 'dark-content')   
+            />
             <TabNavigator>
                 {this.renderItem()}
             </TabNavigator>
@@ -60,8 +79,7 @@ export default class MainContainer extends Component <Props,State> {
   
   const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      paddingTop:28
+      flex: 1
     },
     icon:{
         width:30,
