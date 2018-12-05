@@ -19,6 +19,7 @@
     "buildAndStart": "yarn run build && yarn run watchAndStart"
   },
   "dependencies": {
+    "@types/expo": "^31.0.1",
     "@types/react-native-tab-navigator": "^0.3.2",
     "@types/react-navigation": "^2.13.7",
     "@types/uuid": "^3.4.4",

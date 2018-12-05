@@ -5,7 +5,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image, StatusBar } from 'react-native';
+import { StyleSheet, View, Image, StatusBar } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
 //引入图片资源
 const cookBook = require('../../../assets/images/cookbook.png');
@@ -20,6 +20,7 @@ const moreActive = require('../../../assets/images/more-active.png');
 import HomeContain from './Home/HomeContain';
 import MuteContain from './Mute/MuteContainer';
 import MapContain from './Map/MapContainer';
+import MineContain from './Mine/MineContainer';
 import { inject } from 'mobx-react';
 import uuid from 'uuid';
 let MainContainer = class MainContainer extends Component {
@@ -30,8 +31,8 @@ let MainContainer = class MainContainer extends Component {
             navs: [
                 { id: uuid(), name: 'home', 'title': '菜谱大全', icon: cookBook, iconActive: cookBookActive, component: React.createElement(HomeContain, null) },
                 { id: uuid(), name: 'mune', 'title': '分类', icon: menu, iconActive: menuActive, component: React.createElement(MuteContain, null) },
-                { id: uuid(), name: 'map', 'title': '地图', icon: location, iconActive: locationActive, component: React.createElement(MapContain, null) },
-                { id: uuid(), name: 'more', 'title': '个人中心', icon: more, iconActive: moreActive, component: React.createElement(Text, null, "\u4E2A\u4EBA\u4E2D\u5FC3") },
+                { id: uuid(), name: 'map', 'title': '博客分享', icon: location, iconActive: locationActive, component: React.createElement(MapContain, null) },
+                { id: uuid(), name: 'more', 'title': '个人中心', icon: more, iconActive: moreActive, component: React.createElement(MineContain, null) },
             ]
         };
     }
@@ -49,7 +50,7 @@ let MainContainer = class MainContainer extends Component {
     }
 };
 MainContainer.navigationOptions = {
-    title: '菜谱大全'
+    title: '小昭制作',
 };
 MainContainer = __decorate([
     inject('store')

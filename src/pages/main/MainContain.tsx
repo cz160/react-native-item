@@ -14,6 +14,7 @@ const moreActive = require('../../../assets/images/more-active.png')
 import HomeContain from './Home/HomeContain'
 import MuteContain from './Mute/MuteContainer'
 import MapContain from './Map/MapContainer'
+import MineContain from './Mine/MineContainer'
 import {inject} from 'mobx-react'
 import uuid from 'uuid'
 interface Props {
@@ -26,8 +27,9 @@ interface State {
 }
 @inject('store')
 export default class MainContainer extends Component <Props,State> {
-    static navigationOptions = {
-        title:'菜谱大全'
+    static navigationOptions:any = {
+        title:'小昭制作',
+        // header:null
     }
     constructor(Props:any){
         super(Props)
@@ -36,8 +38,8 @@ export default class MainContainer extends Component <Props,State> {
             navs:[
                 {id:uuid(),name:'home','title':'菜谱大全',icon:cookBook,iconActive:cookBookActive,component:<HomeContain />},
                 {id:uuid(),name:'mune','title':'分类',icon:menu,iconActive:menuActive,component:<MuteContain />},
-                {id:uuid(),name:'map','title':'地图',icon:location,iconActive:locationActive,component:<MapContain />},
-                {id:uuid(),name:'more','title':'个人中心',icon:more,iconActive:moreActive,component:<Text>个人中心</Text>},
+                {id:uuid(),name:'map','title':'博客分享',icon:location,iconActive:locationActive,component:<MapContain />},
+                {id:uuid(),name:'more','title':'个人中心',icon:more,iconActive:moreActive,component:<MineContain />},
             ]
         }
     }
